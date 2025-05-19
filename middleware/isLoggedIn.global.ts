@@ -3,6 +3,10 @@ export default defineNuxtRouteMiddleware((to) => {
     const passwordCookie = useCookie("password");
     const publicRoutes = ["/", "/login"];
 
+    if (import.meta.server) {
+        return;
+    }
+
     if (publicRoutes.includes(to.path)) {
         return;
     }
